@@ -1,0 +1,8 @@
+ATTR{[dmi/id]sys_vendor}=="System76", ATTR{[dmi/id]product_version}=="serw12", GOTO="amd-ppt_serw12"
+GOTO="amd-ppt_none"
+
+LABEL="amd-ppt_serw12"
+SUBSYSTEM=="power_supply", KERNEL=="AC", ENV{POWER_SUPPLY_ONLINE}=="1", RUN+="/usr/bin/amd-ppt 88000"
+SUBSYSTEM=="power_supply", KERNEL=="AC", ENV{POWER_SUPPLY_ONLINE}=="0", RUN+="/usr/bin/amd-ppt 28000"
+
+LABEL="amd-ppt_none"
