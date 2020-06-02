@@ -1,0 +1,12 @@
+Source: amd-ppt-bin
+Section: utils
+Priority: optional
+Maintainer: Jeremy Soller <jeremy@system76.com>
+Build-Depends: debhelper (>= 10)
+Standards-Version: 3.9.8
+Homepage: https://github.com/pop-os/amd-ppt-bin
+
+Package: amd-ppt-bin
+Architecture: amd64
+Depends: pciutils
+Description: AMD PPT binary
