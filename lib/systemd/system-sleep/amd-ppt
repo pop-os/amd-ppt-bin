@@ -1,0 +1,29 @@
+#!/bin/sh
+
+set -e
+
+match="0"
+case "$(cat /sys/class/dmi/id/sys_vendor)" in
+    System76)
+		case "$(cat /sys/class/dmi/id/product_version)" in
+			serw12)
+				match="1"
+				;;
+		esac
+		;;
+esac
+
+if [ "$match" != "1" ]
+then
+	exit 0
+fi
+
+case "$2" in
+	suspend | hybrid-sleep)
+		case "$1" in
+			post)
+				udevadm trigger /sys/class/power_supply/AC
+				;;
+		esac
+		;;
+esac
